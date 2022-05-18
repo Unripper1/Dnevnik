@@ -19,8 +19,8 @@ public interface MainController {
     @PostMapping("/registration")
     String doRegistration(User user);
 
-    @GetMapping("/login")
-    String login();
+//    @GetMapping("/login")
+//    String login();
 
     @PostMapping
     String setStartDay(DayStart dayStart);
@@ -36,9 +36,6 @@ public interface MainController {
 
     @PostMapping
     String addPoint(Event event);
-
-    @PostMapping
-    String updateExercise(Exercise exercise, Boolean result);
 
     @PostMapping
     String updatePoint(Point point, Boolean result);

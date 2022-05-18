@@ -21,5 +21,4 @@ public interface MainService{
     void addEvent(Event event);
     void addPoint(Point point);
     void updatePoint(Point point,Boolean result);
-    void updateExercise(Exercise exercise,Boolean result);
 }

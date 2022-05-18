@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -31,4 +32,15 @@ public class SleepTracker {
     @Enumerated(EnumType.STRING)
     private Mood result;
 
+    @Override
+    public String toString() {
+        return "SleepTracker{" +
+                "id=" + id +
+                ", user=" + user +
+                ", date=" + date +
+                ", start=" + start +
+                ", fin=" + fin +
+                ", result=" + result +
+                '}';
+    }
 }

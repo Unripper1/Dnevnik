@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +25,17 @@ public class ActivityTracker {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "activityTracker", orphanRemoval = true)
-    private List<Exercise> exercises = new ArrayList<>();
-
     private LocalDate date;
 
+    @NotNull(message = "Should not be empty")
     private Integer hobbyTime;
+    @NotNull(message = "Should not be empty")
     private Integer workTime;
+    @NotNull(message = "Should not be empty")
     private Integer sportTime;
+    @NotNull(message = "Should not be empty")
     private Integer studyTime;
+    @NotNull(message = "Should not be empty")
     private Integer socialTime;
 
 }

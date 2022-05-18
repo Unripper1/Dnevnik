@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <meta charset="utf-8">
+
+</head>
+<body>
+
+
+<!--
+<form th:action="@{/registration}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Add new account"/></div>
+</form>-->
+
+<form class="decor" th:action="@{/registration}" th:method="POST" th:object="${user}">
+
+    <h3>Регистрация</h3>
+
+    <div th:if="${message}">
+        <h5>Warning:</h5><h5 th:text="${message}"></h5>
+    </div>
+
+    <h5><div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div></h5>
+    <input type="text" name="name" placeholder="Name">
+
+    <h5><div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div></h5>
+    <input type="text" name="email" placeholder="Email">
+
+    <h5><div th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Name Error</div></h5>
+
+      <input type="text" name="sex" placeholder="Sex">
+
+    <h5><div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</div></h5>
+
+    <input type="number" name="age" placeholder="Age">
+
+    <h5><div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div></h5>
+
+    <input type="password" name="password" placeholder="Password">
+
+    <input type="submit" value="Зарегистрироваться">
+  </div>
+</form>
+
+</body>
+</html>
