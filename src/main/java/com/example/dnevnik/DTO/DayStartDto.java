@@ -11,5 +11,5 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 public class DayStartDto implements Serializable {
-    private final Mood mood;
+    public final Mood mood;
 }
