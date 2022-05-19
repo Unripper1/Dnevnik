@@ -6,8 +6,12 @@ import com.example.dnevnik.DTO.SleepTrackerDto;
 import com.example.dnevnik.entities.DayStart;
 import com.example.dnevnik.entities.Point;
 import com.example.dnevnik.entities.SleepTracker;
+import com.example.dnevnik.entities.User;
+import com.example.dnevnik.repos.UserRepository;
 import com.example.dnevnik.service.DayStartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +25,10 @@ import java.time.LocalDate;
 @RequestMapping("/daystart")
 public class DayStartController {
     @Autowired
+    UserRepository userRepository;
+    @Autowired
     DayStartService dayStartService;
-//    @GetMapping("/{date}")
+    //    @GetMapping("/{date}")
 //    public String getDay(Model model){
 //        model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
 //        model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));
@@ -30,6 +36,7 @@ public class DayStartController {
 //    }
     @GetMapping("/today")
     public String getToday(Model model){
+
         model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
         model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));
         return "todayDayStart";
@@ -40,7 +47,7 @@ public class DayStartController {
         DayStart dayStart= dayStartService.getDayStart(LocalDate.now());
         dayStart.setDate(LocalDate.now());
         dayStart.setMood(dayStartDto.getMood());
-        //dayStart.setUser(); Добавить currentUser
+        dayStart.setUser(userRepository.findByName(((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
         dayStartService.saveDayStart(dayStart);
         model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
         model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));
@@ -54,7 +61,7 @@ public class DayStartController {
         sleepTracker.setStart(sleepTrackerDto.getStart());
         sleepTracker.setFin(sleepTrackerDto.getFin());
         sleepTracker.setResult(sleepTrackerDto.getResult());
-        //sleepTracker.setUser(); Добавить currentUser
+        sleepTracker.setUser(userRepository.findByName(((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
         dayStartService.saveSleep(sleepTracker);
         model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
         model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));

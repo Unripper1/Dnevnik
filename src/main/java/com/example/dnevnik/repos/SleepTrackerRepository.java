@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface SleepTrackerRepository extends JpaRepository<SleepTracker, Integer> {
-    public SleepTracker findSleepTrackerByDate(LocalDate date);
+    public SleepTracker findSleepTrackerByDateAndUser(LocalDate date,String name);
 
     @Query("select at from SleepTracker at where at.user.id in :id")
     List<SleepTracker> findAllByUserId(@Param("id") Integer id);

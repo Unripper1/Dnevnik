@@ -3,7 +3,10 @@ package com.example.dnevnik.controller;
 import com.example.dnevnik.entities.Event;
 import com.example.dnevnik.entities.EventDto;
 import com.example.dnevnik.repos.EventRepository;
+import com.example.dnevnik.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +20,11 @@ import java.time.LocalDate;
 public class EventController {
     @Autowired
     EventRepository eventRepository;
+    @Autowired
+    UserRepository userRepository;
     @GetMapping("/today")
     public String getEvents(Model model){
-        model.addAttribute("events",eventRepository.findAllByDate(LocalDate.now()));
+        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
         return "eventsToday";
     }
 
@@ -30,9 +35,9 @@ public class EventController {
         event.setDescription(eventDto.getDescription());
         event.setName(eventDto.getName());
         event.setMood(eventDto.getMood());
-        // event.setUser(); current user
+        event.setUser(userRepository.findByName(((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
         eventRepository.save(event);
-        model.addAttribute("events",eventRepository.findAllByDate(LocalDate.now()));
+        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
         return "eventsToday";
     }
 

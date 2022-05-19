@@ -7,7 +7,10 @@ import com.example.dnevnik.entities.SleepTracker;
 import com.example.dnevnik.repos.DayStartRepository;
 import com.example.dnevnik.repos.PointRepository;
 import com.example.dnevnik.repos.SleepTrackerRepository;
+import com.example.dnevnik.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,15 +22,17 @@ public class DayStartService {
     @Autowired
     SleepTrackerRepository sleepTrackerRepository;
     @Autowired
+    UserRepository userRepository;
+    @Autowired
     PointRepository pointRepository;
     public DayStart getDayStart(LocalDate date){
-        DayStart dayStart=dayStartRepository.findDayStartByDate(date);
+        DayStart dayStart=dayStartRepository.findDayStartByDateAndUser(date, ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
         if(dayStart==null)
             return new DayStart();
         return dayStart;
     }
     public SleepTracker getSleepTracker(LocalDate date){
-        return sleepTrackerRepository.findSleepTrackerByDate(date);
+        return sleepTrackerRepository.findSleepTrackerByDateAndUser(date,((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
     }
     public void saveDayStart(DayStart dayStart){
         dayStartRepository.save(dayStart);
