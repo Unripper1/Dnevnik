@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-  <meta charset="utf-8">
-
+    <link th:href="@{/styles/cssandjs/login.css}" rel="stylesheet" />
+    <meta charset="utf-8">
 </head>
 <body>
-
-
 <!--
 <form th:action="@{/registration}" method="post">
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <div><input type="submit" value="Add new account"/></div>
 </form>-->
+<div th:class="wrapper">
+    <header>
+        <span>Дневник</span>
+        <button id="btn-out" type="button" onClick="location.href='/login'">Уже есть аккаунт, войти</button>
+    </header>
+    <main>
+        <form th:class="signUpMain" th:action="@{/registration}" th:method="POST" th:object="${user}">
 
-<form class="decor" th:action="@{/registration}" th:method="POST" th:object="${user}">
+            <div th:class="formTitle">Регистрация</div>
 
-    <h3>Регистрация</h3>
+            <div th:if="${message}">
+                <h5>Warning:</h5><h5 th:text="${message}"></h5>
+            </div>
 
-    <div th:if="${message}">
-        <h5>Warning:</h5><h5 th:text="${message}"></h5>
-    </div>
+            <h5><div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div></h5>
+            <div><label> Имя: <input type="text" name="name" placeholder="Имя"/> </label></div>
 
-    <h5><div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div></h5>
-    <input type="text" name="name" placeholder="Name">
+            <h5><div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div></h5>
+            <div><label> Email: <input type="text" name="email" placeholder="Электронная почта"/> </label></div>
 
-    <h5><div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div></h5>
-    <input type="text" name="email" placeholder="Email">
+            <h5><div th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Name Error</div></h5>
 
-    <h5><div th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Name Error</div></h5>
+            <div><label> Пол: <input type="text" name="sex" placeholder="Пол"/> </label></div>
 
-      <input type="text" name="sex" placeholder="Sex">
+            <h5><div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</div></h5>
 
-    <h5><div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</div></h5>
+            <div><label> Возраст: <input type="number" name="age" placeholder="Возраст"/> </label></div>
 
-    <input type="number" name="age" placeholder="Age">
+            <h5><div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div></h5>
 
-    <h5><div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div></h5>
+            <div><label> Пароль: <input type="password" name="password" placeholder="Пароль"/> </label></div>
 
-    <input type="password" name="password" placeholder="Password">
+            <div><input type="submit" value="Зарегистрироваться"/></div>
+        </form>
+    </main>
+    <footer>
 
-    <input type="submit" value="Зарегистрироваться">
-  </div>
-</form>
-
+    </footer>
+</div>
 </body>
 </html>
