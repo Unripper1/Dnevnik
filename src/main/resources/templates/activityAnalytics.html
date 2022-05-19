@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/styles/cssandjs/hello.css}" rel="stylesheet" />
+    <meta charset="utf-8">
+<!--    <link th:href="@{/styles/cssandjs/activityTracker.css}" rel="stylesheet" />-->
+    <script type="text/javascript" th:src="@{/js/cssandjs/actions.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 </head>
 <body>
+<div th:class="wrapper">
+    <header>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти"/>
+        </form>
 
+    </header>
+    <main>
+        <nav>
+
+        </nav>
+        <div class="content">
+            <button type="button" th:attr="onclick=|showActivityStat('${activityAnalytic.hobby}','${activityAnalytic.social}','${activityAnalytic.sport}','${activityAnalytic.study}','${activityAnalytic.work}')|">Show Alert</button>
+            <div>
+                <canvas id="myChart" width="300" height="100"></canvas>
+            </div>
+            <!--      <img src="/images/cat.jpg/" class="center-img"><br>-->
+            <!--      <img th:src="@{/images/cat.jpg}"/>-->
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</div>
 </body>
 </html>

@@ -2,11 +2,11 @@ package com.example.dnevnik.utils;
 
 // вспомогателььный класс для аналитики по активностям
 public class ActivityAnalytics {
-    double hobby;
-    double social;
-    double sport;
-    double study;
-    double work;
+    public double hobby;
+    public double social;
+    public double sport;
+    public double study;
+    public double work;
 
     public ActivityAnalytics(double hobby, double social, double sport, double study, double work) {
         this.hobby = hobby;
@@ -15,6 +15,7 @@ public class ActivityAnalytics {
         this.study = study;
         this.work = work;
     }
+
 
     @Override
     public String toString() {
