@@ -26,6 +26,16 @@
     <input type="submit" value="Сохранить">
     </div>
 </form>
+
+<form th:action="@{/daystart/today/setpoint}" th:method="POST">
+
+    <h3>Введите данные</h3>
+
+    <input type="text" name="description" placeholder="описание">
+
+    <input type="submit" value="Сохранить">
+    </div>
+</form>
 <span th:text="dayStart.getMood()"></span>
 <span th:text="sleepTracker.getSart()"></span>
 <span th:text="sleepTracker.getFin()"></span>
