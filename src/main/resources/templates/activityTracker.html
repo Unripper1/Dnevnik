@@ -30,25 +30,25 @@
         <div class="content">
             <form th:action="@{/activityTracker/addActivity}" th:method="POST" th:object="${activityTracker}">
 
-                <h3>Введите данные о сегодняшних активностях (кол-во часов)</h3>
+                <h3>Введите данные о сегодняшних активностях (количество часов)</h3>
 
                 <h5><div th:if="${#fields.hasErrors('hobbyTime')}" th:errors="*{hobbyTime}">Name Error</div></h5>
-                <input type="number" name="hobbyTime" placeholder="кол-во часов на хобби">
+                <label> Хобби: <input type="number" name="hobbyTime" placeholder="кол-во часов на хобби"> </label>
 
                 <h5><div th:if="${#fields.hasErrors('workTime')}" th:errors="*{workTime}">Name Error</div></h5>
-                <input type="number" name="workTime" placeholder="кол-во часов на работу">
+                <label> Работа: <input type="number" name="workTime" placeholder="кол-во часов на работу"> </label>
 
                 <h5><div th:if="${#fields.hasErrors('sportTime')}" th:errors="*{sportTime}">Name Error</div></h5>
 
-                <input type="number" name="sportTime" placeholder="кол-во часов на спорт">
+                <label> Спорт: <input type="number" name="sportTime" placeholder="кол-во часов на спорт"> </label>
 
                 <h5><div th:if="${#fields.hasErrors('studyTime')}" th:errors="*{studyTime}">Name Error</div></h5>
 
-                <input type="number" name="studyTime" placeholder="кол-во часов на учебу">
+                <label> Учеба: <input type="number" name="studyTime" placeholder="кол-во часов на учебу"></label>
 
                 <h5><div th:if="${#fields.hasErrors('socialTime')}" th:errors="*{socialTime}">Name Error</div></h5>
 
-                <input type="number" name="socialTime" placeholder="кол-во часов на всякую социальную фигню">
+                <label> Общение: <input type="number" name="socialTime" placeholder="кол-во часов на общение"></label>
 
                 <input type="submit" value="Сохранить">
             </form>
