@@ -26,13 +26,13 @@ public class DayStartService {
     @Autowired
     PointRepository pointRepository;
     public DayStart getDayStart(LocalDate date){
-        DayStart dayStart=dayStartRepository.findDayStartByDateAndUser(date, ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+        DayStart dayStart=dayStartRepository.findDayStartByDateAndUser(date,  userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName()));
         if(dayStart==null)
             return new DayStart();
         return dayStart;
     }
     public SleepTracker getSleepTracker(LocalDate date){
-        return sleepTrackerRepository.findSleepTrackerByDateAndUser(date,((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+        return sleepTrackerRepository.findSleepTrackerByDateAndUser(date, userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName()));
     }
     public void saveDayStart(DayStart dayStart){
         dayStartRepository.save(dayStart);

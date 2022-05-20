@@ -36,11 +36,11 @@
     <input type="submit" value="Сохранить">
     </div>
 </form>
-<span th:text="dayStart.getMood()"></span>
-<span th:text="sleepTracker.getSart()"></span>
-<span th:text="sleepTracker.getFin()"></span>
-<span th:text="sleepTracker.getResult()"></span>
-<span th:text="sleepTracker.getPoints()">Тут надо цикл сделать</span>
+<!--<span th:text="dayStart.getMood()"></span>-->
+<span th:text="${sleepTracker.getStart()}"></span>
+<span th:text="${sleepTracker.getFin()}"></span>
+<span th:text="${sleepTracker.getResult()}"></span>
+<span th:text="${sleepTracker.getPoints()}">Тут надо цикл сделать</span>
 
 
 </body>

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface DayStartRepository extends JpaRepository<DayStart, Integer> {
-    public DayStart findDayStartByDateAndUser(LocalDate date, String name);
+    public DayStart findDayStartByDateAndUser(LocalDate date, User name);
 
     @Query("select at from DayStart at where at.user.id in :id")
     List<DayStart> findAllByUserId(@Param("id") Integer id);
