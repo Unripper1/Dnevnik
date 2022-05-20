@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -27,8 +27,8 @@ public class SleepTracker {
 
     private LocalDate date;
 
-    private LocalDateTime start;
-    private LocalDateTime fin;
+    private LocalTime start;
+    private LocalTime fin;
     @Enumerated(EnumType.STRING)
     private Mood result;
 
