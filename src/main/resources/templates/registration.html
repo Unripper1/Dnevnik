@@ -33,7 +33,12 @@
 
             <h5><div th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Name Error</div></h5>
 
-            <div><label> Пол: <input type="text" name="sex" placeholder="Пол"/> </label></div>
+            <div><label> Пол: <select th:field="*{sex}">
+                <option th:text="Мужской" th:value="'М'"></option>
+                <option th:text="Женский" th:value="'Ж'"></option>
+
+            </select>
+            </label></div>
 
             <h5><div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</div></h5>
 

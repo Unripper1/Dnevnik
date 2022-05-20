@@ -1,23 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
+    <link th:href="@{/styles/cssandjs/hello.css}" rel="stylesheet" />
     <meta charset="utf-8">
+    <!--    <link th:href="@{/styles/cssandjs/activityTracker.css}" rel="stylesheet" />-->
+    <script type="text/javascript" th:src="@{/js/cssandjs/actions.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 </head>
 <body>
+<div th:class="wrapper">
+    <header>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти"/>
+        </form>
 
-<form th:action="@{/events/add}" th:method="POST">
+    </header>
+    <main>
+        <nav>
+            <div>
+                <a th:href="@{/daystart/today}"> Начало дня </a>
+            </div>
+            <div class="selected">
+                <a th:href="@{/events/today}"> События </a>
+            </div>
+            <div>
+                <a th:href="@{/activityTracker/addActivity}"> Активность  </a>
+            </div>
+            <div>
+                <a th:href="@{/analytics/activityAnalytics}"> Ваша статистика </a>
+            </div>
 
-    <h3>Введите данные</h3>
+        </nav>
+        <div class="content">
+            <form th:action="@{/events/add}" th:method="POST">
 
-    <input type="text" name="name" placeholder="имя">
-    <input type="text" name="description" placeholder="описание">
-    <input type="text" name="mood" placeholder="настроение">
+                <h3>Введите данные</h3>
 
-    <input type="submit" value="Сохранить">
-    </div>
-</form>
-<span th:text="events">тут надо цикл</span>
+                <input type="text" name="name" placeholder="имя">
+                <input type="text" name="description" placeholder="описание">
+                <input type="text" name="mood" placeholder="настроение">
 
+                <input type="submit" value="Сохранить">
 
+        </form>
+        <span th:text="events">тут надо цикл</span>
+            <!--      <img src="/images/cat.jpg/" class="center-img"><br>-->
+            <!--      <img th:src="@{/images/cat.jpg}"/>-->
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</div>
 </body>
 </html>

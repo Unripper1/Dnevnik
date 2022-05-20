@@ -18,13 +18,16 @@
     <main>
         <nav>
             <div>
-                <a th:href="@{/daystart/today}"> Старт дня </a>
+                <a th:href="@{/daystart/today}"> Начало дня </a>
             </div>
-            <!--      <div>-->
-            <!--        <span th:href="@{/start/verb}"> Запись о сне </span>-->
-            <!--      </div>-->
             <div>
-                <a th:href="@{/analytics/activityAnalytics}"> Активности </a>
+                <a th:href="@{/events/today}"> События </a>
+            </div>
+            <div>
+                <a th:href="@{/activityTracker/addActivity}"> Активность  </a>
+            </div>
+            <div class="selected">
+                <a th:href="@{/analytics/activityAnalytics}"> Ваша статистика </a>
             </div>
 
         </nav>

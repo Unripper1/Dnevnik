@@ -72,10 +72,9 @@ nav div {
     border-bottom-color: black;
     border-width: thin;
     border-bottom-style: dashed;
-
-
 }
-nav div:hover {
+
+nav div:hover, .selected{
     background: rgb(255, 255, 255);
 
     border-color: black;
@@ -167,7 +166,7 @@ form div {
 a{
     text-align: center;
     position: relative;
-    font-size: 32px;
+    font-size: 24px;
     margin-top: 12%;
 }
 

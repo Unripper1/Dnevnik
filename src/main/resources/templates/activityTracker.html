@@ -1,35 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
+    <link th:href="@{/styles/cssandjs/hello.css}" rel="stylesheet" />
     <meta charset="utf-8">
 </head>
 <body>
+<div th:class="wrapper">
+    <header>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти"/>
+        </form>
 
-<form th:action="@{/activityTracker/addActivity}" th:method="POST" th:object="${activityTracker}">
+    </header>
+    <main>
+        <nav>
+            <div>
+                <a th:href="@{/daystart/today}"> Начало дня </a>
+            </div>
+            <div>
+                <a th:href="@{/events/today}"> События </a>
+            </div>
+            <div class="selected">
+                <a th:href="@{/activityTracker/addActivity}"> Активность  </a>
+            </div>
+            <div>
+                <a th:href="@{/analytics/activityAnalytics}"> Ваша статистика </a>
+            </div>
+        </nav>
+        <div class="content">
+            <form th:action="@{/activityTracker/addActivity}" th:method="POST" th:object="${activityTracker}">
 
-    <h3>Введите данные о сегодняших активностях (кол-во часов)</h3>
+                <h3>Введите данные о сегодняшних активностях (кол-во часов)</h3>
 
-    <h5><div th:if="${#fields.hasErrors('hobbyTime')}" th:errors="*{hobbyTime}">Name Error</div></h5>
-    <input type="number" name="hobbyTime" placeholder="кол-во часов на хобби">
+                <h5><div th:if="${#fields.hasErrors('hobbyTime')}" th:errors="*{hobbyTime}">Name Error</div></h5>
+                <input type="number" name="hobbyTime" placeholder="кол-во часов на хобби">
 
-    <h5><div th:if="${#fields.hasErrors('workTime')}" th:errors="*{workTime}">Name Error</div></h5>
-    <input type="number" name="workTime" placeholder="кол-во часов на работу">
+                <h5><div th:if="${#fields.hasErrors('workTime')}" th:errors="*{workTime}">Name Error</div></h5>
+                <input type="number" name="workTime" placeholder="кол-во часов на работу">
 
-    <h5><div th:if="${#fields.hasErrors('sportTime')}" th:errors="*{sportTime}">Name Error</div></h5>
+                <h5><div th:if="${#fields.hasErrors('sportTime')}" th:errors="*{sportTime}">Name Error</div></h5>
 
-    <input type="number" name="sportTime" placeholder="кол-во часов на спорт">
+                <input type="number" name="sportTime" placeholder="кол-во часов на спорт">
 
-    <h5><div th:if="${#fields.hasErrors('studyTime')}" th:errors="*{studyTime}">Name Error</div></h5>
+                <h5><div th:if="${#fields.hasErrors('studyTime')}" th:errors="*{studyTime}">Name Error</div></h5>
 
-    <input type="number" name="studyTime" placeholder="кол-во часов на учебу">
+                <input type="number" name="studyTime" placeholder="кол-во часов на учебу">
 
-    <h5><div th:if="${#fields.hasErrors('socialTime')}" th:errors="*{socialTime}">Name Error</div></h5>
+                <h5><div th:if="${#fields.hasErrors('socialTime')}" th:errors="*{socialTime}">Name Error</div></h5>
 
-    <input type="number" name="socialTime" placeholder="кол-во часов на всякую социальную фигню">
+                <input type="number" name="socialTime" placeholder="кол-во часов на всякую социальную фигню">
 
-    <input type="submit" value="Сохранить">
-    </div>
-</form>
+                <input type="submit" value="Сохранить">
+            </form>
+        </div>
+    </main>
+    <footer>
 
+    </footer>
+</div>
 </body>
 </html>

@@ -1,47 +1,79 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
+    <link th:href="@{/styles/cssandjs/hello.css}" rel="stylesheet" />
     <meta charset="utf-8">
+    <!--    <link th:href="@{/styles/cssandjs/activityTracker.css}" rel="stylesheet" />-->
+    <script type="text/javascript" th:src="@{/js/cssandjs/actions.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 </head>
 <body>
+<div th:class="wrapper">
+    <header>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти"/>
+        </form>
 
-<form th:action="@{/daystart/today/setstart}" th:method="POST">
+    </header>
+    <main>
+        <nav>
+            <div class="selected">
+                <a th:href="@{/daystart/today}"> Начало дня </a>
+            </div>
+            <div>
+                <a th:href="@{/events/today}"> События </a>
+            </div>
+            <div>
+                <a th:href="@{/activityTracker/addActivity}"> Активность  </a>
+            </div>
+            <div>
+                <a th:href="@{/analytics/activityAnalytics}"> Ваша статистика </a>
+            </div>
 
-    <h3>Введите данные</h3>
+        </nav>
+        <div class="content">
+            <form th:action="@{/daystart/today/setstart}" th:method="POST">
 
-    <input type="number" name="mood" placeholder="настреоение">
+                <h3>Введите данные</h3>
 
-    <input type="submit" value="Сохранить">
-    </div>
-</form>
+                <input type="number" name="mood" placeholder="настреоение">
 
-<form th:action="@{/daystart/today/setsleep}" th:method="POST">
+                <input type="submit" value="Сохранить">
+            </form>
+            <form th:action="@{/daystart/today/setsleep}" th:method="POST">
 
-    <h3>Введите данные</h3>
+                <h3>Введите данные о сне</h3>
 
-    <input type="date" name="start" placeholder="начало">
-    <input type="date" name="fin" placeholder="конец">
-    <input type="text" name="result" placeholder="результат">
+                <input type="time" name="start" placeholder="начало">
+                <input type="time" name="fin" placeholder="конец">
+                <input type="text" name="result" placeholder="результат">
 
-    <input type="submit" value="Сохранить">
-    </div>
-</form>
+                <input type="submit" value="Сохранить">
 
-<form th:action="@{/daystart/today/setpoint}" th:method="POST">
+            </form>
 
-    <h3>Введите данные</h3>
+            <form th:action="@{/daystart/today/setpoint}" th:method="POST">
 
-    <input type="text" name="description" placeholder="описание">
+                <h3>Введите данные</h3>
 
-    <input type="submit" value="Сохранить">
-    </div>
-</form>
-<!--<span th:text="dayStart.getMood()"></span>-->
-<span th:text="${sleepTracker.getStart()}"></span>
-<span th:text="${sleepTracker.getFin()}"></span>
-<span th:text="${sleepTracker.getResult()}"></span>
-<span th:text="${sleepTracker.getPoints()}">Тут надо цикл сделать</span>
+                <input type="text" name="description" placeholder="описание">
 
+                <input type="submit" value="Сохранить">
 
+            </form>
+            <!--      <img src="/images/cat.jpg/" class="center-img"><br>-->
+            <!--      <img th:src="@{/images/cat.jpg}"/>-->
+        </div>
+
+        <!--<span th:text="dayStart.getMood()"></span>-->
+<!--        <span th:text="${sleepTracker.getStart()}"></span>-->
+<!--        <span th:text="${sleepTracker.getFin()}"></span>-->
+<!--        <span th:text="${sleepTracker.getResult()}"></span>-->
+<!--        <span th:text="${sleepTracker.getPoints()}">Тут надо цикл сделать</span>-->
+    </main>
+    <footer>
+
+    </footer>
+</div>
 </body>
 </html>
