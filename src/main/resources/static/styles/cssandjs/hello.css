@@ -45,12 +45,16 @@ header form {
     margin-right: 5%;
 }
 nav {
-    background: rgba(255, 255, 255, 0.85);
+    flex-flow: column;
+    background: rgba(255, 235, 255, 0.95);
+
+    /*background: rgba(255, 225, 250, 0.55);*/
+    /*background: rgba(255, 255, 255, 0.85);*/
     width: 20%;
     position: absolute;
     display: flex;
     margin-left: 0px;
-    height: 600px;
+    height: 100%;
     border-right-color: black;
     border-width: thin;
     border-right-style: dashed;
@@ -59,8 +63,34 @@ nav {
     /*width: available;*/
     /*background-color: lightsteelblue;*/
     /*margin-bottom: 20px;*/
+}
+
+nav div {
+    height: 20%;
+    /*background: rgba(255, 255, 255, 0.45);*/
+    background: rgba(255, 235, 255, 0.95);
+    border-bottom-color: black;
+    border-width: thin;
+    border-bottom-style: dashed;
+
 
 }
+nav div:hover {
+    background: rgb(255, 255, 255);
+
+    border-color: black;
+    border-width: thin;
+    border-style: solid;
+}
+
+nav div a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    margin-top: 15%;
+    margin-left: 20%
+}
+
 main {
     flex: 1 1 auto;
 }
@@ -134,7 +164,7 @@ form div {
     width: 100%;
 }
 
-span{
+a{
     text-align: center;
     position: relative;
     font-size: 32px;
@@ -147,7 +177,7 @@ footer {
     z-index: 3;
     /*box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);*/
     background: rgba(255, 255, 255, 0.85);
-    box-shadow: inset 0px 0px 5px 5px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.35);
 }
 .formTitle {
     text-align: center;

@@ -17,10 +17,19 @@
     </header>
     <main>
         <nav>
+            <div>
+                <a th:href="@{/daystart/today}"> Старт дня </a>
+            </div>
+            <!--      <div>-->
+            <!--        <span th:href="@{/start/verb}"> Запись о сне </span>-->
+            <!--      </div>-->
+            <div>
+                <a th:href="@{/analytics/activityAnalytics}"> Активности </a>
+            </div>
 
         </nav>
         <div class="content">
-            <button type="button" th:attr="onclick=|showActivityStat('${activityAnalytic.hobby}','${activityAnalytic.social}','${activityAnalytic.sport}','${activityAnalytic.study}','${activityAnalytic.work}')|">Show Alert</button>
+            <button type="button" th:onclick="|showActivityStat('${activityAnalytic.hobby}','${activityAnalytic.social}','${activityAnalytic.sport}','${activityAnalytic.study}','${activityAnalytic.work}')|">Статистика по активности</button>
             <div>
                 <canvas id="myChart" width="300" height="100"></canvas>
             </div>
