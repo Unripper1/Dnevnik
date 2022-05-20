@@ -32,43 +32,56 @@
 
         </nav>
         <div class="content">
-            <form th:action="@{/daystart/today/setstart}" th:method="POST">
+            <form th:action="@{/daystart/today/setstart}" th:method="POST" th:object="${dayStart}">
 
-                <h3>Введите данные</h3>
+                <h3>Введите данные о настроении</h3>
+                <div><label> Настроение: <select th:field="*{mood}">
+                    <option th:text="'Отлично'" th:value="'VERY_GOOD'"></option>
+                    <option th:text="'Хорошо'" th:value="'GOOD'"></option>
+                    <option th:text="'Нормально'" th:value="'FINE'"></option>
+                    <option th:text="'Грустно'" th:value="'SAD'"></option>
+                    <option th:text="'Очень грустно'" th:value="'VERY_SAD'"></option>
 
-                <input type="number" name="mood" placeholder="настреоение">
+                </select>
+                </label></div>
 
                 <input type="submit" value="Сохранить">
             </form>
-            <form th:action="@{/daystart/today/setsleep}" th:method="POST">
+            <form th:action="@{/daystart/today/setsleep}" th:method="POST" th:object="${sleepTracker}">
 
                 <h3>Введите данные о сне</h3>
 
-                <input type="time" name="start" placeholder="начало">
-                <input type="time" name="fin" placeholder="конец">
-                <input type="text" name="result" placeholder="результат">
+                <label> Отход ко сну: <input type="time" name="start" placeholder="начало"></label>
+                <label> Пробуждение: <input type="time" name="fin" placeholder="конец"></label>
+                <div><label> Как спалось? <select th:field="*{result}">
+                    <option th:text="'Отлично'" th:value="'VERY_GOOD'"></option>
+                    <option th:text="'Хорошо'" th:value="'GOOD'"></option>
+                    <option th:text="'Нормально'" th:value="'FINE'"></option>
+                    <option th:text="'Плохо'" th:value="'SAD'"></option>
+                    <option th:text="'Ужасно'" th:value="'VERY_SAD'"></option>
 
+                </select>
+                </label></div>
                 <input type="submit" value="Сохранить">
 
             </form>
 
             <form th:action="@{/daystart/today/setpoint}" th:method="POST">
 
-                <h3>Введите данные</h3>
+                <h3>Какие планы на сегодня?</h3>
 
                 <input type="text" name="description" placeholder="описание">
 
                 <input type="submit" value="Сохранить">
 
             </form>
-            <!--      <img src="/images/cat.jpg/" class="center-img"><br>-->
-            <!--      <img th:src="@{/images/cat.jpg}"/>-->
+
         </div>
 
-        <!--<span th:text="dayStart.getMood()"></span>-->
-<!--        <span th:text="${sleepTracker.getStart()}"></span>-->
-<!--        <span th:text="${sleepTracker.getFin()}"></span>-->
-<!--        <span th:text="${sleepTracker.getResult()}"></span>-->
+        <span th:if="${dayStart} != null" th:text="${dayStart.getMood()}"></span>
+        <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getStart()}"></span>
+        <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getFin()}"></span>
+        <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getResult()}"></span>
 <!--        <span th:text="${sleepTracker.getPoints()}">Тут надо цикл сделать</span>-->
     </main>
     <footer>

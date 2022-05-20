@@ -36,6 +36,10 @@
             <div>
                 <canvas id="myChart" width="300" height="100"></canvas>
             </div>
+            <button type="button" th:onclick="|showMoodStat('${moodAnalytic.very_good}', '${moodAnalytic.good}','${moodAnalytic.fine}', '${moodAnalytic.sad}', '${moodAnalytic.very_sad}')|">Статистика по настроению</button>
+            <div>
+                <canvas id="myChart2" width="300" height="100"></canvas>
+            </div>
             <!--      <img src="/images/cat.jpg/" class="center-img"><br>-->
             <!--      <img th:src="@{/images/cat.jpg}"/>-->
         </div>

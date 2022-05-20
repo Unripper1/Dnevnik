@@ -51,7 +51,7 @@ public class DayStartController {
         dayStartService.saveDayStart(dayStart);
         model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
         model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));
-        return "todayDayStart";
+        return "redirect:/daystart/today";
     }
 
     @PostMapping("/today/setsleep")
@@ -65,7 +65,8 @@ public class DayStartController {
         dayStartService.saveSleep(sleepTracker);
         model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
         model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));
-        return "todayDayStart";
+        System.out.println(model);
+        return "redirect:/daystart/today";
     }
 
     @PostMapping("/today/setpoint")
@@ -77,7 +78,7 @@ public class DayStartController {
         dayStartService.savePoint(point);
         model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
         model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));
-        return "todayDayStart";
+        return "redirect:/daystart/today";
     }
 
 

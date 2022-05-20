@@ -27,7 +27,7 @@ public class AnalyticsController {
     {
         User user = registrationService.getUser(principal.getName());
         model.addAttribute("activityAnalytic", analyticService.getActivityAnalytic(user));
-//        model.addAttribute("moodAnalytic", analyticService.getMoodAnalytic(user));
+        model.addAttribute("moodAnalytic", analyticService.getMoodAnalytic(user));
         model.addAttribute("sleepAnalytic", analyticService.getSleepAnalytic(user));
 
 
