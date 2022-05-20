@@ -24,7 +24,7 @@ public class EventController {
     UserRepository userRepository;
     @GetMapping("/today")
     public String getEvents(Model model){
-        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
+        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName())));
         return "eventsToday";
     }
 
@@ -37,7 +37,7 @@ public class EventController {
         event.setMood(eventDto.getMood());
         event.setUser(userRepository.findByName(((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
         eventRepository.save(event);
-        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
+        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName())));
         return "eventsToday";
     }
 
