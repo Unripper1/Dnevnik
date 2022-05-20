@@ -38,8 +38,16 @@
 
                 <input type="text" name="name" placeholder="имя">
                 <input type="text" name="description" placeholder="описание">
-                <input type="text" name="mood" placeholder="настроение">
+<!--                <input type="text" name="mood" placeholder="настроение">-->
+                <div><label> Настроение: <select name="mood">
+                    <option th:text="'Отлично'" th:value="'VERY_GOOD'"></option>
+                    <option th:text="'Хорошо'" th:value="'GOOD'"></option>
+                    <option th:text="'Нормально'" th:value="'FINE'"></option>
+                    <option th:text="'Грустно'" th:value="'SAD'"></option>
+                    <option th:text="'Очень грустно'" th:value="'VERY_SAD'"></option>
 
+                </select>
+                </label></div>
                 <input type="submit" value="Сохранить">
 
         </form>

@@ -77,11 +77,12 @@
             </form>
 
         </div>
-
-        <span th:if="${dayStart} != null" th:text="${dayStart.getMood()}"></span>
-        <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getStart()}"></span>
-        <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getFin()}"></span>
-        <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getResult()}"></span>
+        <div>
+            <span th:if="${dayStart} != null" th:text="${dayStart.getMood()}"></span>
+            <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getStart()}"></span>
+            <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getFin()}"></span>
+            <span th:if="${sleepTracker} != null" th:text="${sleepTracker.getResult()}"></span>
+        </div>
 <!--        <span th:text="${sleepTracker.getPoints()}">Тут надо цикл сделать</span>-->
     </main>
     <footer>

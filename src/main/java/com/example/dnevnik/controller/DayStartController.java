@@ -65,7 +65,6 @@ public class DayStartController {
         dayStartService.saveSleep(sleepTracker);
         model.addAttribute("dayStart", dayStartService.getDayStart(LocalDate.now()));
         model.addAttribute("sleepTracker", dayStartService.getSleepTracker(LocalDate.now()));
-        System.out.println(model);
         return "redirect:/daystart/today";
     }
 

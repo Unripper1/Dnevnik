@@ -37,8 +37,8 @@ public class EventController {
         event.setMood(eventDto.getMood());
         event.setUser(userRepository.findByName(((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
         eventRepository.save(event);
-        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName())));
-        return "eventsToday";
+//        model.addAttribute("events",eventRepository.findAllByDateAndUser(LocalDate.now(),userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName())));
+        return "redirect:/events/today";
     }
 
 }

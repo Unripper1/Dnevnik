@@ -70,7 +70,7 @@ function showMoodStat(number, n1, n2, n3, n4) {
         options: {
             title: {
                 display: true,
-                text: 'Аналитика сна за всё время',
+                text: 'Аналитика настроения за всё время',
                 position: 'top',
                 fontSize: 16,
                 fontColor: '#111',

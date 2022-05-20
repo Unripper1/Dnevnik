@@ -1,11 +1,11 @@
 package com.example.dnevnik.utils;
 
 public class MoodAnalytics {
-    double very_sad;
-    double sad;
-    double fine;
-    double good;
-    double very_good;
+    public double very_sad;
+    public double sad;
+    public double fine;
+    public double good;
+    public double very_good;
 
     public MoodAnalytics(double very_sad, double sad, double fine, double good, double very_good) {
         this.very_sad = very_sad;
