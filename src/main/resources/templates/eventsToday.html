@@ -32,7 +32,7 @@
 
         </nav>
         <div class="content">
-            <form th:action="@{/events/add}" th:method="POST">
+            <form class="dataForm" th:action="@{/events/add}" th:method="POST">
 
                 <h3>Введите данные</h3>
 
@@ -51,9 +51,11 @@
                 <input type="submit" value="Сохранить">
 
         </form>
-        <span th:text="events">тут надо цикл</span>
+            <div class="savedInfo">
+                <span th:text="events">тут надо цикл</span>
             <!--      <img src="/images/cat.jpg/" class="center-img"><br>-->
             <!--      <img th:src="@{/images/cat.jpg}"/>-->
+            </div>
         </div>
     </main>
     <footer>

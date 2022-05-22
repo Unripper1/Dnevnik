@@ -47,13 +47,13 @@
 
                 <input type="submit" value="Сохранить">
             </form>
-            <form th:action="@{/daystart/today/setsleep}" th:method="POST" th:object="${sleepTracker}">
+            <form th:action="@{/daystart/today/setsleep}" th:method="POST">
 
                 <h3>Введите данные о сне</h3>
 
                 <label> Отход ко сну: <input type="time" name="start" placeholder="начало"></label>
                 <label> Пробуждение: <input type="time" name="fin" placeholder="конец"></label>
-                <div><label> Как спалось? <select th:field="*{result}">
+                <div><label> Как спалось? <select name="result">
                     <option th:text="'Отлично'" th:value="'VERY_GOOD'"></option>
                     <option th:text="'Хорошо'" th:value="'GOOD'"></option>
                     <option th:text="'Нормально'" th:value="'FINE'"></option>
